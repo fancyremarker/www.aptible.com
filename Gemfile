@@ -38,3 +38,5 @@ gem 'pry'
 gem 'rake'
 gem 'redcarpet'
 gem 'rspec'
+
+gem 'whenever'
