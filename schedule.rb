@@ -5,5 +5,5 @@ set :output, '/var/log/whenever.log'
 ENV.each { |k, v| env(k, v) }
 
 every 1.minutes do
-  command 'cd /opt/www.aptible.com && bundle exec middleman contentful'
+  command 'cd /opt/www.aptible.com && bundle exec rake contentful:pull'
 end

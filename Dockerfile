@@ -13,8 +13,6 @@ RUN bundle install
 
 ADD . /opt/www.aptible.com
 
-RUN bundle exec middleman contentful
-
 EXPOSE 4567
 
 CMD ["script/aptible-cmd.sh"]
