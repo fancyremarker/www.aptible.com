@@ -49,10 +49,8 @@ data.redirects.each do |item|
   redirect(match[1], item['url']) if match
 end
 
-# In development, reload the browser when files change
-configure :development do
-  activate :livereload, host: 'localhost'
-end
+# If ENV flag is set, reload the browser when files change
+activate :livereload, host: 'localhost' if ENV['ENABLE_LIVERELOAD']
 
 #
 # Page options, layouts, aliases and proxies
@@ -67,6 +65,11 @@ page '/*.txt', layout: false
 page '/blog/*', layout: 'blog_post.haml'
 # See /source/feed.xml.builder
 page '/feed.xml', layout: false
+
+#
+# Changelog
+#
+page '/changelog/*', layout: 'changelog_post.haml'
 
 # Authors
 # Requires the site to be "ready" to read from the sitemap resources
@@ -83,7 +86,8 @@ ready do
             .sort_by { |p| p.data['posted'] }.reverse!
     page "/blog/authors/#{author[0]}.html"
     proxy "/blog/authors/#{author[0]}.html", '/blog/author.html',
-          locals: { author_id: author[0], posts: posts }
+          locals: { author_id: author[0], posts: posts },
+          ignore: true
   end
 end
 
@@ -161,7 +165,7 @@ end
 # - limited path configuration, ends up needing proxy config
 ready do
   posts_per_page = 10
-  all_posts = blog_posts
+  all_posts = blog_and_grouped_changelog_posts
   subsets = paginated_subsets(all_posts, posts_per_page)
   number_of_pages = total_pages(all_posts.count, posts_per_page)
   page_links = page_links(number_of_pages, '/blog')
