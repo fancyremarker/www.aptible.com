@@ -15,7 +15,8 @@ module ContentfulHelpers
           'posted' => Time.parse(yml[:posted]).to_date,
           'product' => yml[:product],
           'section' => 'Blog',
-          'type' => yml[:type]
+          'type' => yml[:type],
+          'hackernews_link' => yml[:hackernews_link]
         }
       }]
     end,
@@ -24,11 +25,11 @@ module ContentfulHelpers
         markdown_path: "source/#{yml[:subfolder]}/#{yml[:slug]}.md",
         markdown: yml[:content],
         frontmatter: {
-          'attachments' => yml[:attachments],
           'category' => yml[:category],
           'cover_image' => yml[:cover_image],
           'created_at' => Time.parse(yml[:date]).to_datetime,
           'description' => yml[:meta_description] || yml[:snippet],
+          'documents' => yml[:documents],
           'excerpt' => yml[:snippet],
           'featured' => yml[:featured],
           'included_on_index' => yml[:included_on_index],
