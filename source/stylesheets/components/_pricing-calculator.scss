@@ -41,10 +41,19 @@
 .price-calc__unit__estimate {
   align-items: flex-start;
   display: flex;
+  @media screen and (max-width: 500px) {
+    flex-wrap: wrap;
+    .price-calc__unit__slider {
+      width: 100%;
+    }
+    .price-calc__unit__value {
+      margin: 10px 0 0 0;
+      width: 100%;
+    }
+  }
 }
 
 .price-calc__unit__slider {
-  display: inline-block;
   flex-grow: 1;
 }
 .price-calc__unit__value {

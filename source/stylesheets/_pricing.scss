@@ -188,6 +188,12 @@
 .pricing-rates {
   display: flex;
   margin-bottom: 30px;
+  @media screen and (max-width: 500px) {
+    flex-wrap: wrap;
+    .pricing-rate {
+      margin-bottom: 5px;
+    }
+  }
 }
 
 .pricing-rate {
