@@ -1,10 +1,14 @@
 ---
-title: Plans and Pricing
-id: pricing
-description: "Aptible plans and pricing"
-tooltip_containers: "1 GB RAM Docker containers. Instantly scalable. Estimate 1 container per Linux process. Custom container sizes available."
-tooltip_disks: "Encrypted database storage. Includes backups: daily for 90 days, monthly for 6 years."
-tooltip_endpoints: "SSL endpoint. Attaches to your container service. May be used for internal services."
+title: Pricing for Enclave container orchestration platform
+description: Transparent pricing details for Enclave, Aptible's Docker container
+             orchestration platform
+tooltip_containers: '1 GB RAM Docker containers. Instantly scalable. Estimate 1
+                    container per Linux process. Custom container sizes
+                    available.'
+tooltip_disks: 'Encrypted database storage. Includes backups: daily for 90 days,
+               monthly for 6 years.'
+tooltip_endpoints: 'TLS/SSL endpoints attach to your container service. May be
+                   used for internal services.'
 ---
 
 - content_for :header do
@@ -22,10 +26,11 @@ tooltip_endpoints: "SSL endpoint. Attaches to your container service. May be use
             Free Enclave Development Stack plus $500 usage credit on all new
             accounts!
           .price-credit-cta__subtitle
-            Deploy your application to a Development Stack now
-        .price-credit-cta__bonus $500 Bonus Credit
+            Deploy to a free Development Stack now. Just pay for usage charged
+            after your $500 credit.
+        .price-credit-cta__credit $500 Free Credit
         = partial 'partials/ctas/signup-cta', locals: {           |
-            cta_label: 'Get Started',                             |
+            cta_label: 'Sign Up',                                 |
             cta_placeholder: 'Enter your work email',             |
             class_name: 'signup-cta--small signup-cta--no-border' |
           }                                                       |
@@ -143,7 +148,7 @@ tooltip_endpoints: "SSL endpoint. Attaches to your container service. May be use
           .price-calc__unit__header
             %h4.price-calc__unit__title
               %dfn{ "data-toggle" => "tooltip", "data-title" => current_page.data.tooltip_endpoints }
-                TSL/SSL Endpoints
+                TLS/SSL Endpoints
                 %span.price-calc__help-tip ?
             .price-calc__unit__price $0.05/hour/month
 
@@ -198,10 +203,10 @@ tooltip_endpoints: "SSL endpoint. Attaches to your container service. May be use
               %span /month
 
       .price-calc__totals
-        %a.btn{ href: open_account_href } Get Started Now
+        %a.btn{ href: open_account_href } Sign Up Now
 
         .price-calc__one-time-credit
-          .price-calc__totals__title Included Bonus Credit
+          .price-calc__totals__title Included Free Credit
           .price-calc__totals__subtitle Use toward resource usage
           .price-calc__totals__value $500
 

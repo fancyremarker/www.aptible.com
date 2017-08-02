@@ -1,20 +1,21 @@
 $ ->
   class PriceCalculator
     # Mutable Attributes
-    handlesPHI    : true
-    fullService   : false
-    containers    : 6
-    disks         : 8
-    endpoints     : 4
-    vpnConnections: 0
+    containers     : 6
+    disks          : 8
+    endpoints      : 4
+    vpnConnections : 0
 
-    # Fixed
-    phiContainers : 6
-    phiDisks      : 8
-    phiEndpoints  : 4
+    # Included
+    incContainers  : 6
+    incDisks       : 8
+    incEndpoints   : 4
 
-    diskValuesGB  : [0, 10, 20, 50, 100, 250, 500, 750, 1000, 1500, 2000]
-    diskLabels    : ['0 GB', '10 GB', '20 GB', '50 GB', '100 GB', '250 GB',
+    containerValues: []
+    containerLabels: []
+
+    diskValuesGB   : [0, 10, 20, 50, 100, 250, 500, 750, 1000, 1500, 2000]
+    diskLabels     : ['0 GB', '10 GB', '20 GB', '50 GB', '100 GB', '250 GB',
                      '500 GB', '750 GB', '1 TB', '1.5 TB', '2 TB']
 
     # Prices
@@ -23,34 +24,32 @@ $ ->
     perDisk          : (gb) -> (0.37 * gb).toFixed 2
     perEndpoint      : (0.05 * 730).toFixed 2
     perVpnConnection : 99
-    phiBaseCost      : 999
+    perMonthBase     : 999
 
     setValue: (attr, value) -> @[attr] = value
 
     diskSize: -> @diskLabels[@disks]
 
     containersCost: ->
-      includedContainers = if @handlesPHI then @phiContainers else 0
+      includedContainers = @incContainers
       containers = if @containers > 10 then 10 else @containers
       @toCurrency Math.max(((containers - includedContainers) * @perContainer), 0)
 
     disksCost: ->
-      includedGB = @diskValuesGB[if @handlesPHI then @phiDisks else 0]
+      includedGB = @diskValuesGB[@incDisks]
       diskGB = @diskValuesGB[if @disks > 10 then 10 else @disks]
       gb = Math.max(diskGB - includedGB, 0)
       @toCurrency parseFloat(@perDisk(gb))
 
     endpointsCost: ->
-      includedEndpoints = if @handlesPHI then @phiEndpoints else 0
       endpoints = if @endpoints > 10 then 10 else @endpoints
-      @toCurrency Math.max(((endpoints - includedEndpoints) * @perEndpoint), 0)
+      @toCurrency Math.max(((endpoints - @incEndpoints) * @perEndpoint), 0)
 
     vpnConnectionsCost: ->
       connections = if @vpnConnections > 10 then 10 else @vpnConnections
       @toCurrency Math.max(connections * @perVpnConnection, 0)
 
-    baseCost: ->
-      @toCurrency(if @handlesPHI then @phiBaseCost else 0)
+    baseCost: -> @toCurrency(@perMonthBase)
 
     price: ->
       @toCurrency(
@@ -68,10 +67,7 @@ $ ->
     toCurrency: (num) ->
       # num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
       Math.round(num).toString().replace(/(\d)(?=(\d{3}))/g, '$1,')
-
-
   # } End PriceCalculator object definition
-
 
   #
   # Hook up the UI to the PriceCalculator object

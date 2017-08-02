@@ -45,6 +45,13 @@
   }
 }
 
+.price-calc {
+  background-color: $white;
+  border: 1px solid #dee6f0;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
 .pricing-summary__header {
   background-image: linear-gradient(0, #e9f1fd 32%, #f9fafc 100%);
   border: 1px solid #e2ebf7;
@@ -401,13 +408,13 @@
     }
   }
   @media screen and (max-width: 500px) {
-    .price-credit-cta__bonus {
+    .price-credit-cta__credit {
       margin-bottom: 10px;
     }
   }
 }
 
-.price-credit-cta__bonus {
+.price-credit-cta__credit {
   background-color: $green;
   border-radius: 4px;
   box-shadow: 0 1px 8px 0 rgba(0,0,0,.12);
