@@ -18,12 +18,18 @@
 .pricing-summaries {
   display: flex;
   justify-content: space-between;
-  margin-bottom: -175px;
+  margin-bottom: -210px;
+  position: relative;
   transform: translateY(-220px);
+  z-index: 1;
 
   @media screen and (max-width: 1080px) {
     display: block;
   }
+}
+
+.pricing-summaries--enclave {
+  margin-bottom: -185px;
 }
 
 .pricing-summary {
@@ -132,7 +138,7 @@
 }
 
 .pricing-summary--fill {
-  height: 185px;
+  height: 205px;
 }
 
 .pricing-summary__body--bordered {
