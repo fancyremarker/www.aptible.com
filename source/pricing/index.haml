@@ -65,8 +65,9 @@ description: Transparent pricing details for Enclave, Aptible's Docker container
             .pricing-rate__title SSL Endpoints
             .pricing-rate__rate $0.05/hour
 
-        %a.btn.btn--full{ href: open_account_href } Get Started With Enclave
-        %a.arrow-link--right{ href: '/pricing/enclave/' } Customize Enclave Pricing
+        .pricing-summary__actions
+          %a.btn.btn--outline{ href: '/pricing/enclave/' } Enclave Pricing Calculator
+          %a.btn{ href: open_account_href } Get Started With Enclave
 
     -# Gridiron
     .pricing-summary.pricing-summary--gridiron
@@ -79,7 +80,7 @@ description: Transparent pricing details for Enclave, Aptible's Docker container
       .pricing-summary__body
         .product-price
           .product-price__name Gridiron
-          .product-price__price $2,500/month with annual contract
+          .product-price__price Starting at $2,500/month with annual contract
 
         .pricing-summary__checklist.pricing-summary--fill
           .pricing-summary__label Includes
@@ -91,18 +92,19 @@ description: Transparent pricing details for Enclave, Aptible's Docker container
             %li.pricing-summary__checklist-item
               Advanced compliance and security training for up to 10 team members
 
-        .pricing-summary__label
-          Additional training users and compliance protocols available
-        .pricing-rates
-          .pricing-rate
-            .pricing-rate__title Compliance Protocols
-            .pricing-rate__rate $500/month
-          .pricing-rate
-            .pricing-rate__title Basic Training Users
-            .pricing-rate__rate $29/user/month
-          .pricing-rate
-            .pricing-rate__title Advanced Training Users
-            .pricing-rate__rate $49/user/month
+        .pricing-summary--hidden
+          .pricing-summary__label
+            ********
+          .pricing-rates
+            .pricing-rate
+              .pricing-rate__title ********
+              .pricing-rate__rate ********
+            .pricing-rate
+              .pricing-rate__title ********
+              .pricing-rate__rate ********
+            .pricing-rate
+              .pricing-rate__title ********
+              .pricing-rate__rate ********
 
         = partial 'partials/ctas/demo-cta', locals: {             |
             cta_label: 'Request A Demo',                          |
@@ -114,10 +116,9 @@ description: Transparent pricing details for Enclave, Aptible's Docker container
 .content
   .grid-container
     .pricing-faq
-      .pricing-faq__title Frequently Asked Questions
       .pricing-faq__products
         .pricing-faq__product
-          .pricing-faq__question Why do customers choose Enclave?
+          .pricing-faq__product-title Why do customers choose Enclave?
           .pricing-faq__answer
             %p
               For new projects, setting up a secure deployment environment that
@@ -137,7 +138,7 @@ description: Transparent pricing details for Enclave, Aptible's Docker container
               engineering teams that need to move fast and not break things.
 
         .pricing-faq__product
-          .pricing-faq__question Why do customers choose Gridiron?
+          .pricing-faq__product-title Why do customers choose Gridiron?
           .pricing-faq__answer
             %p
               Meeting the requirements for HIPAA, ISO 27001, or SOC 2 means

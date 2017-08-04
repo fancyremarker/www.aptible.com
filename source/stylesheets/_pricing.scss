@@ -44,6 +44,10 @@
   }
 }
 
+.pricing-summary--hidden {
+  visibility: hidden;
+}
+
 .price-calc, .pricing-summary--gridiron {
   margin-left: 30px;
   @media screen and (max-width: 1080px) {
@@ -134,6 +138,36 @@
     color: $blue-steel;
     font-size: 14px;
     font-weight: $regular;
+  }
+}
+
+.pricing-summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .btn {
+    text-align: center;
+    margin-left: 0;
+    min-width: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: calc(50% - 15px);
+  }
+  .btn--outline {
+    border-color: $blue;
+    color: $blue;
+    &:hover, &:focus {
+      border-color: $blue-prime;
+      color: $blue-prime;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .btn {
+      width: 100%;
+      &:first-of-type {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
